@@ -1,0 +1,56 @@
+body {
+  padding: 1%;
+  
+}
+
+
+
+#root {
+  background-color: #EFE1CE;
+}
+
+.header {
+  display: flex;
+}
+
+h1 {
+  flex-grow: 8;
+  margin-left: 2%;
+  font-family: 'Courier New', monospace;
+  
+}
+
+ul {
+  display: flex;
+  flex-grow: 10;
+  list-style-type: none;
+}
+
+ul li {
+  flex-grow: 3;
+}
+
+.top-menu {
+
+}
+
+.register {
+  border-style: groove;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
+
+}
+.mainFeed {
+  border-style: groove;
+  padding-bottom:25% ;
+  
+}
+
+.login {
+  flex-grow: 1;
+   
+}
