@@ -17,6 +17,19 @@ function App() {
     email:""
 
 })
+
+const [login, updateLogin] = useState({
+  username:"",
+  password:""
+})
+
+function loginUsername(username){
+  updateLogin({username:username,password:login.password})
+}
+
+function loginPassword(password){
+  updateLogin({username:login.username,password:password})
+}
   //console.log(user)
   
   function changeUserName(uname) {
@@ -84,23 +97,40 @@ function changeEmail(email) {
  configApp(changedUser)
 }
  
-function sendPost(){
+function signUp(){
+  
   const registered = user;
 
   axios.post('http://localhost:4000/app/sign', registered)
-  .then(response => console.log(response.data))
+  .then(response => console.log(response))
+}
+
+  let postLogin = (event) =>{
+  event.preventDefault()
+
+  const logged = login;
+
+   axios.post('http://localhost:4000/app/login', logged)
+  //.then(response => console.log(response.data))
+  .then((response) =>{ 
+    if (response.data.status==="ok"){alert("logged in succesfully")}
+    console.log(response.data)
+  })
+
 }
    
   return (
     <div className="App">
-      <Header></Header>
+      
+      <Header loginUsername={loginUsername} loginPassword={loginPassword} postLogin={postLogin}></Header>
       <Body 
       changeUserName={changeUserName} 
       changeFullName={changeFullName} 
       changePassword={changePassword} 
       changeDOB={changeDOB} 
       changeEmail={changeEmail}
-      sendPost={sendPost}></Body>      
+      sendPost={signUp}></Body>  
+       
     </div>
   );
 }
