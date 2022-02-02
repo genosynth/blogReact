@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import Header from './components/Header'
 import Body from './components/Body'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
+import jwt from 'jwt-decode';
+import LoggedInHeader from './components/LoggedInHeader';
 
 
 function App() {
 
-  const [user, configApp] = useState({ //stateApp was used before to try shit
+  const [user, configApp] = useState({ 
     
     username:"",
     fullName:"",
@@ -22,6 +24,26 @@ const [login, updateLogin] = useState({
   username:"",
   password:""
 })
+
+
+
+const [isLoggedIn, changeLogInStatus] = useState(()=>{
+  const token = localStorage.getItem("token")
+  if (token){
+  const loggedUser = jwt(token)
+  if(loggedUser){return loggedUser.username}
+  else {
+    localStorage.removeItem('token')
+    return false}
+  } else { return false}
+
+})
+
+const logOut =()=>{
+  changeLogInStatus(false)
+  localStorage.removeItem('token')
+  window.location.href="/"
+}
 
 function loginUsername(username){
   updateLogin({username:username,password:login.password})
@@ -113,16 +135,26 @@ function signUp(){
    axios.post('http://localhost:4000/app/login', logged)
   //.then(response => console.log(response.data))
   .then((response) =>{ 
-    if (response.data.status==="ok"){alert("logged in succesfully")}
+    if (response.data.user){// true or false check
+      localStorage.setItem('token', response.data.user)
+      alert("Logged in succesfully!")
+      window.location.href="/dashboard"
+    } else {
+      alert("Username and/or Password incorrect!")
+  }
     console.log(response.data)
   })
 
-}
-   
+}   
+
+
+
   return (
+
+  
     <div className="App">
       
-      <Header loginUsername={loginUsername} loginPassword={loginPassword} postLogin={postLogin}></Header>
+      <Header isLoggedIn={isLoggedIn} logOut={logOut} loginUsername={loginUsername} loginPassword={loginPassword} postLogin={postLogin}></Header>
       <Body 
       changeUserName={changeUserName} 
       changeFullName={changeFullName} 

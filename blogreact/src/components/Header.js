@@ -1,9 +1,17 @@
 import * as Icon from 'react-bootstrap-icons';
 import React, {useRef} from 'react';
-export default function Header({loginUsername,loginPassword, postLogin}) {
+import LoggedInHeader from './LoggedInHeader'
+export default function Header({isLoggedIn, logOut,loginUsername,loginPassword, postLogin}) {
 
   const unameRef=useRef();
   const passRef=useRef();
+
+  if (isLoggedIn){
+    return <LoggedInHeader isLoggedIn={isLoggedIn} logOut={logOut}></LoggedInHeader>
+  }
+
+  
+  
   return <div className="header">
       <h1>POST-ED</h1>
       <ul>

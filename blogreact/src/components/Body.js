@@ -1,6 +1,7 @@
 import DefaultPage from "./DefaultPage";
 import SignUp from "./SignUp";
 import {BrowserRouter as Router, Switch, Routes, Route } from 'react-router-dom';
+import Dashboard from "./Dashbord";
 
 
 export default function Body({changeUserName,changeFullName, changePassword, changeDOB, changeEmail, sendPost}) {
@@ -21,6 +22,8 @@ export default function Body({changeUserName,changeFullName, changePassword, cha
          changeDOB={changeDOB} 
          changeEmail={changeEmail}
          sendPost={sendPost}></SignUp>}/>
+         <Route path="/dashboard" element={<Dashboard/>}/> 
+         
 
         
        </Routes>
