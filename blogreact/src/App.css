@@ -1,12 +1,11 @@
-body {
+#root {
   padding: 1%;
-  
+  background-color: #EFE1CE;
 }
 
-
-
-#root {
+html {
   background-color: #EFE1CE;
+
 }
 
 .header {
@@ -30,9 +29,6 @@ ul li {
   flex-grow: 3;
 }
 
-.top-menu {
-
-}
 
 .register {
   border-style: groove;
@@ -44,6 +40,17 @@ ul li {
   margin-top: 2%;
 
 }
+
+.box {
+  border-style: groove;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 2%;
+}
+
 .mainFeed {
   border-style: groove;
   padding-bottom:25% ;

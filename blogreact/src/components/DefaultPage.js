@@ -1,8 +1,10 @@
 import React from 'react';
 
 export default function DefaultPage() {
-  return <div className='register'> 
-      <p>You need to be logged in to access the feed.</p>
-      <p>Please log in from the navigation bar or sign up if you haven't got a user yet.</p>
+  return <div className='box'> 
+
+    <h1 style={{textAlign:'center'}}>WELCOME</h1>
+      <p>Welcome to POST-ED</p>
+      <p>Once logged in you can access the main feed from the Home icon in the navigation bar.</p>
   </div>
 }

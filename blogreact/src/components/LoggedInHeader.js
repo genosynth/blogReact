@@ -7,10 +7,13 @@ export default function loggedInHeader({isLoggedIn, logOut}) {
   return <div className="header">
       <h1>POST-ED</h1>
       <ul>
-          <li><a href='/dashboard'><Icon.HouseDoorFill></Icon.HouseDoorFill></a></li>
-          <li><Icon.InfoCircle></Icon.InfoCircle></li>
-          <li><Icon.Chat></Icon.Chat></li>
+          <li ><a href='/dashboard'><Icon.HouseDoorFill></Icon.HouseDoorFill></a></li>
+          <li><a href='/about'><Icon.InfoCircle></Icon.InfoCircle></a></li>
+          <li><a href='/contact'><Icon.Chat></Icon.Chat></a></li>
       </ul>
+      <div style={{flexGrow: 5.9}}>
+      
       <span>Logged in as <span style={{fontWeight: "bold"}} >{isLoggedIn}</span><button onClick={()=>{logOut(false)}} className="btn btn-dark" >Log Out</button></span>
+      </div>
   </div>;
 }

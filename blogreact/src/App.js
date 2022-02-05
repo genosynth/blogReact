@@ -10,6 +10,13 @@ import LoggedInHeader from './components/LoggedInHeader';
 
 function App() {
 
+  const [userArticles, updateUserArticles] = useState([])
+
+  function setArticles(inputs){
+    updateUserArticles(inputs)
+  }
+
+
   const [user, configApp] = useState({ 
     
     username:"",
@@ -38,6 +45,10 @@ const [isLoggedIn, changeLogInStatus] = useState(()=>{
   } else { return false}
 
 })
+
+const [article, updateArticle] = useState({name:"",content:""})
+function insertArticleName(articleName){updateArticle({name:articleName, content:article.content})}
+function insertArticleContent(articleContent){updateArticle({name:article.name, content:articleContent})}
 
 const logOut =()=>{
   changeLogInStatus(false)
@@ -145,7 +156,20 @@ function signUp(){
     console.log(response.data)
   })
 
-}   
+}
+
+let postArticle = ()=>{
+//event.preventDefault()
+  let user = {
+    username:isLoggedIn,
+    articleName:article.name,
+    articleContent:article.content
+  }
+
+  axios.post('http://localhost:4000/app/article', user)
+  .then(response => console.log("nigga"))
+
+}
 
 
 
@@ -156,12 +180,19 @@ function signUp(){
       
       <Header isLoggedIn={isLoggedIn} logOut={logOut} loginUsername={loginUsername} loginPassword={loginPassword} postLogin={postLogin}></Header>
       <Body 
+      isLoggedIn={isLoggedIn}
       changeUserName={changeUserName} 
       changeFullName={changeFullName} 
       changePassword={changePassword} 
       changeDOB={changeDOB} 
       changeEmail={changeEmail}
-      sendPost={signUp}></Body>  
+      sendPost={signUp}
+      postArticle={postArticle}
+      insertArticleContent={insertArticleContent}
+      insertArticleName={insertArticleName}
+      userArticles={userArticles}
+      setArticles={setArticles}>
+      </Body>  
        
     </div>
   );

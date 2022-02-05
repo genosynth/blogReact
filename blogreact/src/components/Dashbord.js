@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import jwt from 'jwt-decode';
+import Articles from "./Articles";
 
 import { useHistory, useNavigate } from 'react-router-dom';
-export default function Dashboard() {
+export default function Dashboard({isLoggedIn, postArticle, insertArticleName, insertArticleContent, userArticles, setArticles}) {
+  const aName=useRef();//article name 
+  const aContent=useRef();// article content
 
   const navigate = useNavigate()
 
@@ -39,5 +42,27 @@ export default function Dashboard() {
 
 
 
-  return <div> accessed mother fucker</div>;
+  return <div className='box' style={{marginRight:"20%"}}> 
+    
+
+      <h1 style={{textAlign:'center'}}>{isLoggedIn}'s wall</h1>
+
+      <Articles userArticles={userArticles} setArticles={setArticles}></Articles>
+      
+
+      <form onSubmit={()=>{postArticle()}} className='box'>
+      <input ref={aName} type="text" placeholder='Enter Name of Blog/Article' onChange={()=>{
+        let articleName = aName.current.value
+        insertArticleName(articleName)
+      }}></input>
+      <textarea ref={aContent} rows="4" cols="50" placeholder='Start writing!' onChange={()=>{
+        let articleContent = aContent.current.value
+        insertArticleContent(articleContent)
+      }}>    
+      </textarea>
+      <button type="submit" className='btn btn-primary'>Post</button>
+
+    </form>
+
+  </div>;
 }

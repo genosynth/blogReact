@@ -1,5 +1,22 @@
 const mongoose = require("mongoose")
 
+const articles = new mongoose.Schema({
+    name: {
+        type:String,
+        required: true
+    },
+
+    content: {
+        type:String,
+        required:true
+    },
+
+    date:{
+        type:Date,
+        default:Date.now()
+    }
+})
+
 const signUpTemplate = new mongoose.Schema({
     fullName:{
         type: String,
@@ -29,7 +46,12 @@ const signUpTemplate = new mongoose.Schema({
 
     date:{
         type:Date,
-        default:Date.now()}
+        default:Date.now()
+    },
+
+    articles:[articles]
 })
+
+
 
 module.exports = mongoose.model('mytable', signUpTemplate)

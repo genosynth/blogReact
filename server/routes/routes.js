@@ -50,14 +50,40 @@ router.get('/dashboard', async (req, res) => {
 	try {
 		const decoded = jwt.verify(token, 'secretqwerty')
 		const email = decoded.email
-        console.log(email)
+        //console.log(email)
 		const user = await signUpTemplateCopy.findOne({ email: email })
 
-		return res.json({ status: 'ok', quote: user.quote })
+		return res.json({ status: 'okay', user: user })
 	} catch (error) {
 		console.log(error)
 		res.json({ status: 'error', error: 'invalid token' })
 	}
+})
+
+router.get('/getArticles', async (req, res)=> {
+    const user = await signUpTemplateCopy.findOne({
+        username: req.body.username
+    })
+    console.log("bab")
+    if (user){
+        return res.json({status:"gotem", user:true})
+    } else { return res.json({status:"error getting articles", user:false})}
+})
+
+router.post('/article', async (req, res)=> { // this is used to post articles in the database of the user signed in
+  //response.send('send')
+  const user = await signUpTemplateCopy.findOne({
+    username: req.body.username, 
+    
+ })
+
+ //console.log(user.articles)
+
+ if(user){
+    user.articles.push({name:req.body.articleName, content:req.body.articleContent})
+    user.save()
+    return console.log(user.articles)
+ } else {return res.json({status:"error", user:false})}
 })
 
 

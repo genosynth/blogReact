@@ -16,13 +16,15 @@ export default function Header({isLoggedIn, logOut,loginUsername,loginPassword, 
       <h1>POST-ED</h1>
       <ul>
           <li><a href='/'><Icon.HouseDoorFill></Icon.HouseDoorFill></a></li>
-          <li><Icon.InfoCircle></Icon.InfoCircle></li>
-          <li><Icon.Chat></Icon.Chat></li>
+          <li><a href='/about'><Icon.InfoCircle></Icon.InfoCircle></a></li>
+          <li><a href='/contact'><Icon.Chat></Icon.Chat></a></li>
       </ul>
+
+      <span><button className="btn btn-link"><a href='/signup'>Sign Up</a></button></span>
+      
       <form className="login" onSubmit={postLogin}>
-        <div>
-           
-              <span><button className="btn btn-link"><a href='/signup'>Sign Up</a></button></span>
+        <div>          
+              
             
               <input ref={unameRef} type="text" placeholder="Username" onChange={()=>{
                 let username=unameRef.current.value
