@@ -3,8 +3,8 @@ import React, {useRef} from "react";
 export default function SignUp({changeUserName, changeFullName, changePassword, changeDOB, changeEmail , sendPost}) {
 
   const unameRef=useRef();
-  const nameRef=useRef();
-  const passRef=useRef();
+  const regNameRef=useRef();
+  const regPassRef=useRef();
   const dobRef=useRef();
   const emailRef=useRef();
 
@@ -17,15 +17,15 @@ export default function SignUp({changeUserName, changeFullName, changePassword, 
 
             }}></input>
           <label>Full Name : </label>
-          <input ref={nameRef} type="text" onChange={()=> {
-            let name = nameRef.current.value
+          <input ref={regNameRef} type="text" onChange={()=> {
+            let name = regNameRef.current.value
             changeFullName(name)
 
             }}></input>
          
           <label>Password : </label>
-          <input ref={passRef} type="password" onChange={()=> {
-            let pass = passRef.current.value
+          <input ref={regPassRef} type="password" onChange={()=> {
+            let pass = regPassRef.current.value
             changePassword(pass)
 
             }}></input>

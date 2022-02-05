@@ -9,7 +9,7 @@ import { useHistory, useNavigate } from 'react-router-dom';
 
 function Articles({userArticles , setArticles}) {
 
-    let madonna = async ()=>  {
+    let getArticles = async ()=>  {
         //event.PreventDefault()
         const req = await fetch('http://localhost:4000/app/dashboard',{
             headers: {
@@ -25,7 +25,7 @@ function Articles({userArticles , setArticles}) {
 
       
     //console.log(madonna())
-    madonna()
+    getArticles()
 
     return(
         

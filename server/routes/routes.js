@@ -44,6 +44,22 @@ router.post('/login', async(request, response) => {
 
 })
 
+router.post('/article', async (req, res)=> { // this is used to post articles in the database of the user signed in
+  //response.send('send')
+  const user = await signUpTemplateCopy.findOne({
+    username: req.body.username, 
+    
+ })
+
+ //console.log(user.articles)
+
+ if(user){
+    user.articles.push({name:req.body.articleName, content:req.body.articleContent})
+    user.save()
+    return console.log(user.articles)
+ } else {return res.json({status:"error", user:false})}
+})
+
 router.get('/dashboard', async (req, res) => {
 	const token = req.headers['x-axxess-token']
     //console.log(req.headers)
@@ -68,22 +84,6 @@ router.get('/getArticles', async (req, res)=> {
     if (user){
         return res.json({status:"gotem", user:true})
     } else { return res.json({status:"error getting articles", user:false})}
-})
-
-router.post('/article', async (req, res)=> { // this is used to post articles in the database of the user signed in
-  //response.send('send')
-  const user = await signUpTemplateCopy.findOne({
-    username: req.body.username, 
-    
- })
-
- //console.log(user.articles)
-
- if(user){
-    user.articles.push({name:req.body.articleName, content:req.body.articleContent})
-    user.save()
-    return console.log(user.articles)
- } else {return res.json({status:"error", user:false})}
 })
 
 

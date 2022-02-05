@@ -47,6 +47,7 @@ const signUpTemplate = new mongoose.Schema({
     date:{
         type:Date,
         default:Date.now()
+        
     },
 
     articles:[articles]

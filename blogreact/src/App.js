@@ -5,19 +5,17 @@ import Body from './components/Body'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import jwt from 'jwt-decode';
-import LoggedInHeader from './components/LoggedInHeader';
 
 
 function App() {
 
-  const [userArticles, updateUserArticles] = useState([])
-
+  const [userArticles, updateUserArticles] = useState([]) //used to get articles when logged in
   function setArticles(inputs){
     updateUserArticles(inputs)
   }
 
 
-  const [user, configApp] = useState({ 
+  const [user, configApp] = useState({  //used to register a new user
     
     username:"",
     fullName:"",
@@ -26,15 +24,83 @@ function App() {
     email:""
 
 })
+function changeUserName(uname) {
+    
+  let changedUser = {
+    username:uname,
+    fullName:user.fullName,    
+    password:user.password,
+    dob:user.dob,
+    email:user.email
+   }
+ 
+ configApp(changedUser)
+}
 
-const [login, updateLogin] = useState({
+function changeFullName(fname) {
+ 
+ let changedUser = {
+   username:user.username,
+   fullName:fname,    
+   password:user.password,
+   dob:user.dob,
+   email:user.email
+  }
+
+configApp(changedUser)
+}
+
+function changePassword(password) {
+ 
+let changedUser = {
+ username:user.username,
+ fullName:user.fullName,    
+ password:password,
+ dob:user.dob,
+ email:user.email
+}
+
+configApp(changedUser)
+}
+
+function changeDOB(dateOfBirth) {
+ 
+let changedUser = {
+ username:user.username,
+ fullName:user.fullName,    
+ password:user.password,
+ dob:dateOfBirth,
+ email:user.email
+}
+
+configApp(changedUser)
+}
+
+function changeEmail(email) {
+ 
+let changedUser = {
+ username:user.username,
+ fullName:user.fullName,    
+ password:user.password,
+ dob:user.dob,
+ email:email
+}
+
+configApp(changedUser)
+}
+
+const [login, updateLogin] = useState({ //used to log in an existent user
   username:"",
   password:""
 })
-
-
-
-const [isLoggedIn, changeLogInStatus] = useState(()=>{
+function loginUsername(username){ 
+  updateLogin({username:username,password:login.password})
+}
+function loginPassword(password){
+  updateLogin({username:login.username,password:password})
+}
+  
+const [isLoggedIn, changeLogInStatus] = useState(()=>{ //used to get the name of the logged in user
   const token = localStorage.getItem("token")
   if (token){
   const loggedUser = jwt(token)
@@ -46,89 +112,17 @@ const [isLoggedIn, changeLogInStatus] = useState(()=>{
 
 })
 
-const [article, updateArticle] = useState({name:"",content:""})
+const [article, updateArticle] = useState({name:"",content:""})// used to post a new article
 function insertArticleName(articleName){updateArticle({name:articleName, content:article.content})}
 function insertArticleContent(articleContent){updateArticle({name:article.name, content:articleContent})}
 
-const logOut =()=>{
+const logOut =()=>{ //logs out by removing token from local storage
   changeLogInStatus(false)
   localStorage.removeItem('token')
   window.location.href="/"
 }
-
-function loginUsername(username){
-  updateLogin({username:username,password:login.password})
-}
-
-function loginPassword(password){
-  updateLogin({username:login.username,password:password})
-}
-  //console.log(user)
   
-  function changeUserName(uname) {
-    
-     let changedUser = {
-       username:uname,
-       fullName:user.fullName,    
-       password:user.password,
-       dob:user.dob,
-       email:user.email
-      }
-    
-    configApp(changedUser)
-  }
 
-  function changeFullName(fname) {
-    
-    let changedUser = {
-      username:user.username,
-      fullName:fname,    
-      password:user.password,
-      dob:user.dob,
-      email:user.email
-     }
-   
-   configApp(changedUser)
- }
-
- function changePassword(password) {
-    
-  let changedUser = {
-    username:user.username,
-    fullName:user.fullName,    
-    password:password,
-    dob:user.dob,
-    email:user.email
-   }
- 
- configApp(changedUser)
-}
-
-function changeDOB(dateOfBirth) {
-    
-  let changedUser = {
-    username:user.username,
-    fullName:user.fullName,    
-    password:user.password,
-    dob:dateOfBirth,
-    email:user.email
-   }
- 
- configApp(changedUser)
-}
-
-function changeEmail(email) {
-    
-  let changedUser = {
-    username:user.username,
-    fullName:user.fullName,    
-    password:user.password,
-    dob:user.dob,
-    email:email
-   }
- 
- configApp(changedUser)
-}
  
 function signUp(){
   
