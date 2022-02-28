@@ -124,12 +124,19 @@ const logOut =()=>{ //logs out by removing token from local storage
   
 
  
-function signUp(){
-  
+let signUp = (event)=>{
+  event.preventDefault()
   const registered = user;
 
   axios.post('http://localhost:4000/app/sign', registered)
-  .then(response => console.log(response))
+  .then((response) => {
+    if(response.data.email){
+    alert("Registered succesfully!")
+     return window.location.href="/"
+    //console.log(response)
+    } else{ alert("Username and/or Email already in use! Please use another username and/or email.")}
+  })
+  
 }
 
   let postLogin = (event) =>{

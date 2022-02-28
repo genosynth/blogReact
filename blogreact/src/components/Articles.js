@@ -23,9 +23,11 @@ function Articles({userArticles , setArticles}) {
         }
       }
 
+      useEffect(()=> {
+       getArticles()
+      }, [])
       
-    //console.log(madonna())
-    getArticles()
+ 
 
     return(
         

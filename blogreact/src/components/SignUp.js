@@ -9,7 +9,7 @@ export default function SignUp({changeUserName, changeFullName, changePassword, 
   const emailRef=useRef();
 
   return <div>
-      <form onSubmit={()=>{sendPost()}} className="register">
+      <form  onSubmit={sendPost} className="register">
           <label>Username : </label>
           <input ref={unameRef} type="text" onChange={()=> {
             let uname = unameRef.current.value
@@ -41,7 +41,7 @@ export default function SignUp({changeUserName, changeFullName, changePassword, 
             changeEmail(email)
 
             }}></input>
-          <button type="submit" className="btn btn-primary">Register</button>
+          <button className="btn btn-primary">Register</button>
       </form>
   </div>;
 }

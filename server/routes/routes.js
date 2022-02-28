@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const signUpTemplateCopy = require("../models/signUpModels")
 const jwt = require("jsonwebtoken")
-const jwt_decode = require("jwt-decode")
+
 router.post('/sign', (request, response) => {
     //response.send('send')
     const signedUpUser = new signUpTemplateCopy({
@@ -16,6 +16,7 @@ router.post('/sign', (request, response) => {
 
     signedUpUser.save()
     .then (data => {
+        console.log(data)
         response.json(data)
         //console.log(data)
     })

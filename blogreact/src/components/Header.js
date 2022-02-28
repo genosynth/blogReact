@@ -15,7 +15,7 @@ export default function Header({isLoggedIn, logOut,loginUsername,loginPassword, 
   return <div className="header">
       <h1>POST-ED</h1>
       <ul>
-          <li><a href='/'><Icon.HouseDoorFill></Icon.HouseDoorFill></a></li>
+          <li><a href='/'><Icon.HouseDoor></Icon.HouseDoor></a></li>
           <li><a href='/about'><Icon.InfoCircle></Icon.InfoCircle></a></li>
           <li><a href='/contact'><Icon.Chat></Icon.Chat></a></li>
       </ul>

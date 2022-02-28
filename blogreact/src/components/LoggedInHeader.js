@@ -7,7 +7,7 @@ export default function loggedInHeader({isLoggedIn, logOut}) {
   return <div className="header">
       <h1>POST-ED</h1>
       <ul>
-          <li ><a href='/dashboard'><Icon.HouseDoorFill></Icon.HouseDoorFill></a></li>
+          <li ><a href='/dashboard'><Icon.HouseDoor></Icon.HouseDoor></a></li>
           <li><a href='/about'><Icon.InfoCircle></Icon.InfoCircle></a></li>
           <li><a href='/contact'><Icon.Chat></Icon.Chat></a></li>
       </ul>
