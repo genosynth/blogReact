@@ -2,13 +2,15 @@ const express = require('express')
 const router = express.Router()
 const signUpTemplateCopy = require("../models/signUpModels")
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs");
 
-router.post('/sign', (request, response) => {
+router.post('/sign', async(request, response) => {
     //response.send('send')
+    let hashedPassword = await bcrypt.hash(request.body.password, 8);
     const signedUpUser = new signUpTemplateCopy({
         fullName: request.body.fullName,
         username: request.body.username,
-        password: request.body.password,
+        password: hashedPassword,
         email: request.body.email,
         dob: request.body.dob 
 
@@ -30,10 +32,10 @@ router.post('/login', async(request, response) => {
     //response.send('send')
    const user = await signUpTemplateCopy.findOne({
        username: request.body.username, 
-       password: request.body.password
+       //password: request.body.password {THIS IS COMMENTED AS PASSWORD IS BEING CHECKED BY HASHING AFTER THIS LINE}
     })
 
-    if(user){
+    if(user && await bcrypt.compare(request.body.password, user.password)){
 
         const token = jwt.sign({
             username:user.username,
