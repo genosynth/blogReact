@@ -11,7 +11,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
 
   async function accessPrivatePage(event){
     //event.PreventDefault()
-    const req = await fetch('http://localhost:4000/app/dashboard',{
+    const req = await fetch('http://192.168.0.145:4000/app/dashboard',{
       headers: {
         'x-axxess-token':localStorage.getItem('token'),
       },

@@ -11,7 +11,7 @@ function Articles({userArticles , setArticles}) {
 
     let getArticles = async ()=>  {
         //event.PreventDefault()
-        const req = await fetch('http://localhost:4000/app/dashboard',{
+        const req = await fetch('http://192.168.0.145:4000/app/dashboard',{
             headers: {
               'x-axxess-token':localStorage.getItem('token'),
             },

@@ -144,7 +144,7 @@ let signUp = (event)=>{
 
   const logged = login;
 
-   axios.post('http://localhost:4000/app/login', logged)
+   axios.post('http://192.168.0.145:4000/app/login', logged)
   //.then(response => console.log(response.data))
   .then((response) =>{ 
     if (response.data.user){// true or false check
@@ -167,7 +167,7 @@ let postArticle = ()=>{
     articleContent:article.content
   }
 
-  axios.post('http://localhost:4000/app/article', user)
+  axios.post('http://192.168.0.145:4000/app/article', user)
   .then(response => console.log("nigga"))
 
 }
