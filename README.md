@@ -1,5 +1,5 @@
 # blogReact
-A full stack application with user authentication & authorization where a user can sign up and get stored in a database, then logs in and can start posting his stuff for only him to see.
+A full stack application with user authentication & authorization where a user can sign up and get stored in a database, then logs in and can start posting his posts for all registered users to see.
 
 ## Technologies used
 
@@ -77,7 +77,7 @@ Database Connected
 
 7. After the server is running we can now run the client part of the website.
 
-<sup>NOTE - This part is only done in development stage as we are using a server for both the client side and the backend side of the application, so we will need to run the below commands in the client folder<sup>
+<sup>NOTE - This part is only done in development stage as we are using a server for both the client side and the backend side of the application, so we will need to run the below commands in the client folder.<sup>
 
 ```
 npm start 

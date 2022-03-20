@@ -45,17 +45,15 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
   return <div className='box' style={{marginRight:"20%"}}> 
     
 
-      <h1 style={{textAlign:'center'}}>{isLoggedIn}'s wall</h1>
-
-      <Articles userArticles={userArticles} setArticles={setArticles}></Articles>
+      <h1 style={{textAlign:'center'}}>{isLoggedIn}'s wall</h1>      
       
 
       <form onSubmit={()=>{postArticle()}} className='box'>
-      <input ref={aName} type="text" placeholder='Enter Name of Blog/Article' onChange={()=>{
+      <input ref={aName} type="text" required  minLength="3" placeholder='Enter Name of Blog/Article' onChange={()=>{
         let articleName = aName.current.value
         insertArticleName(articleName)
       }}></input>
-      <textarea ref={aContent} rows="4" cols="50" placeholder='Start writing!' onChange={()=>{
+      <textarea ref={aContent} rows="4" cols="50" placeholder='Start writing!' required onChange={()=>{
         let articleContent = aContent.current.value
         insertArticleContent(articleContent)
       }}>    
@@ -63,6 +61,8 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
       <button type="submit" className='btn btn-primary'>Post</button>
 
     </form>
+
+    <Articles userArticles={userArticles} setArticles={setArticles}></Articles>
 
   </div>;
 }
