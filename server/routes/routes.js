@@ -79,13 +79,31 @@ router.get('/dashboard', async (req, res) => {
 	}
 })
 
-/router.get('/getArticles', async (req, res)=> {
+router.get('/getArticles', async (req, res)=> {
     const users = await signUpTemplateCopy.find().select("username").select("articles")
     //console.log(users)
     if (users){
         return res.json({status:"gotem", users:users})
     } else { return res.json({status:"error getting articles", users:false})}
 }) 
+
+router.post('/deleteArticle', async (req, res)=>{
+
+    const user = await signUpTemplateCopy.findOne({ username: req.body.username })
+    //console.log(user.articles)
+
+    for (let i=0; i<user.articles.length; i++){
+        if (user.articles[i].id==req.body.article._id){
+            user.articles.splice(i,1)
+        }
+    }
+  
+    user.save()
+    
+    return res.json({ status: 'deleted', article: req.body.article._id })
+
+
+})
 
 
 module.exports = router

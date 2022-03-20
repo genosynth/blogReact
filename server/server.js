@@ -8,7 +8,7 @@ const cors = require('cors')
 
 dotenv.config()
 
-mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
+mongoose.connect("mongodb+srv://test0db:1234@test0.psdbb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", (error, result) =>{
     if (error) {return console.log(error)}
     else console.log("Database connected")
 })

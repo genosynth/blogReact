@@ -62,7 +62,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
 
     </form>
 
-    <Articles userArticles={userArticles} setArticles={setArticles}></Articles>
+    <Articles userArticles={userArticles} setArticles={setArticles} isLoggedIn={isLoggedIn}></Articles>
 
   </div>;
 }

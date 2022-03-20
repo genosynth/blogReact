@@ -7,7 +7,7 @@ import { useHistory, useNavigate } from 'react-router-dom';
 
 
 
-function Articles({userArticles , setArticles}) {
+function Articles({userArticles , setArticles, isLoggedIn}) {
 
   let getAllArticles = async ()=>{ //gets all articles of all registered users
     const req = await fetch('http://192.168.0.145:4000/app/getArticles')
@@ -62,7 +62,7 @@ function Articles({userArticles , setArticles}) {
         
         userArticles.map(article => {
 
-            return <Article key={article.name} article={article}/>                      
+            return <Article key={article.name} article={article} isLoggedIn={isLoggedIn}/>                      
 
         })    
 
