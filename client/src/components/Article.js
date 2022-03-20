@@ -4,12 +4,13 @@ import axios from 'axios'
 function Article({article, isLoggedIn}) {
 
   let deletePost = (event)=>{
-    let check = window.confirm("Are you sure you want to delete this post?")
-    if (check===false){return}
     event.preventDefault()
+    let check = window.confirm("Are you sure you want to delete this post?")
+    if (check==false){return}
+    
     const dataSent = {username:isLoggedIn, article:article};
   
-    axios.post('http://localhost:4000/app/deleteArticle', dataSent)
+    axios.post('http://192.168.0.145:4000/app/deleteArticle', dataSent)
     .then((response) => {
       if(response.status){
       alert("Post Deleted Successfully!")
