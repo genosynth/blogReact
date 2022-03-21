@@ -57,7 +57,7 @@ router.post('/article', async (req, res)=> { // this is used to post articles in
  //console.log(user.articles)
 
  if(user){
-    user.articles.push({name:req.body.articleName, content:req.body.articleContent})
+    user.articles.push({name:req.body.articleName, content:req.body.articleContent, date: req.body.date})
     user.save()
     return console.log(user.articles)
  } else {return res.json({status:"error", user:false})}

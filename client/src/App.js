@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Header from './components/Header'
 import Body from './components/Body'
@@ -159,15 +159,16 @@ let signUp = (event)=>{
 
 }
 
-let postArticle = ()=>{
+let postArticle = async ()=>{
 //event.preventDefault()
   let user = {
     username:isLoggedIn,
     articleName:article.name,
-    articleContent:article.content
+    articleContent:article.content,
+    date:Date.now()
   }
 
-  axios.post('http://192.168.0.145:4000/app/article', user)
+  await axios.post('http://192.168.0.145:4000/app/article', user)
   .then(response => console.log("nigga"))
 
 }
