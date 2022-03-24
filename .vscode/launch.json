@@ -1,5 +1,5 @@
 {
-    /*"version": "0.2.0",
+    "version": "0.2.0",
     "configurations": [
         {
             "type": "pwa-chrome",
@@ -8,8 +8,8 @@
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}"
         }
-    ] */
-    "version": "0.2.0",
+    ] 
+   /* "version": "0.2.0",
     "configurations": [
         {
             "type": "node",
@@ -18,8 +18,9 @@
             "runtimeExecutable": "nodemon",
             "program": "${workspaceRoot}/server/server.js",
             "console": "integratedTerminal",
+            "envFile": "${workspaceFolder}/server/.env"
             
         }
- ]
+ ] */
 
 }

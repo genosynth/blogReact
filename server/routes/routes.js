@@ -102,8 +102,29 @@ router.post('/deleteArticle', async (req, res)=>{
     
     return res.json({ status: 'deleted', article: req.body.article._id })
 
-
 })
+
+router.post('/editArticle', async (req, res)=> { // this is used to post articles in the database of the user signed in
+    //response.send('send')
+    const user = await signUpTemplateCopy.findOne({
+      username: req.body.username, 
+      
+   })  
+     
+   if(user){
+      user.articles.forEach((article)=>{
+          if(article._id==req.body.id){
+              article.name=req.body.articleName
+              article.content=req.body.articleContent
+              console.log(article)
+              user.save()
+          }
+          
+      })
+      
+      return console.log(user.articles)
+   } else {return res.json({status:"error", user:false})}
+  })
 
 
 module.exports = router

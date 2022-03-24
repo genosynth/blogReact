@@ -59,7 +59,7 @@ function Articles({userArticles , setArticles, isLoggedIn}) {
         
         userArticles.map(article => {
 
-            return <Article key={article.name} article={article} isLoggedIn={isLoggedIn}/>                      
+            return <Article key={article.date} article={article} isLoggedIn={isLoggedIn}/>                      
 
         })    
 
