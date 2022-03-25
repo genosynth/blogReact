@@ -26,8 +26,8 @@ function Article({article, isLoggedIn}) {
   let editPost = async(event)=>{
     //event.preventDefault()
     //article.name = "funny"
-    document.getElementById(article.date).innerHTML=`<input id="input${article.date}" placeholder=${article.name} required minLength="3"></input>`
-    document.getElementById(`content${article.date}`).innerHTML=`<textarea id="inputContent${article.date}" placeholder=${article.content} required minLength="3"></textarea>`
+    document.getElementById(article.date).innerHTML=`<input id="input${article.date}" value=${article.name} required minLength="3"></input>`
+    document.getElementById(`content${article.date}`).innerHTML=`<textarea id="inputContent${article.date}" placeholder="${article.content}" required minLength="3"></textarea>`
     //document.getElementById(`btn${article.date}`).innerText=`Save`
     let newBtn = document.createElement("button")
     newBtn.innerText = "Save"

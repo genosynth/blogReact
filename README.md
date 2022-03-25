@@ -15,6 +15,8 @@ A full stack application with user authentication & authorization where a user c
 
 **EXPRESS** for setting up the server.
 
+**JSON WEB TOKEN** an enxrypted token is created when a users logs in so that it is stored in the browserand the user won't have to log in each time to views the website.
+
 
 ## Set Up 
 

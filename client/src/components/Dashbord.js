@@ -49,7 +49,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
       
 
       <form onSubmit={()=>{postArticle()}} className='box'>
-      <input ref={aName} type="text" required  minLength="3" placeholder='Enter Name of Blog/Article' onChange={()=>{
+      <input ref={aName} type="text" required  minLength="3" placeholder='Enter Name of Post/Blog/Article' onChange={()=>{
         let articleName = aName.current.value
         insertArticleName(articleName)
       }}></input>
