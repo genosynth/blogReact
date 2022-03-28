@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Button from 'react-bootstrap/Button';
 import axios from 'axios'
 
 function Article({article, isLoggedIn}) {
@@ -30,8 +31,9 @@ function Article({article, isLoggedIn}) {
     document.getElementById(`content${article.date}`).innerHTML=`<textarea id="inputContent${article.date}" placeholder="${article.content}" required minLength="3"></textarea>`
     //document.getElementById(`btn${article.date}`).innerText=`Save`
     let newBtn = document.createElement("button")
-    newBtn.innerText = "Save"
-    document.getElementById(`btn${article.date}`).style="visibility:hidden" // hides Edit button 
+    newBtn.classList.add(`btn-success`)
+    newBtn.innerText = "Save"    
+    document.getElementById(`btn${article.date}`).remove() //removes edit button
     document.getElementById(`form${article.date}`).appendChild(newBtn) // adds Save button to the DOM
     document.getElementById(`form${article.date}`).addEventListener("submit", ()=>{
       submitEdit()
@@ -66,15 +68,15 @@ function Article({article, isLoggedIn}) {
   let style={textAlign: "right"}
 
   if (article.username===isLoggedIn){
-    return <div className='box'>
+    return <div className='box' style={{backgroundColor: "rgb(206, 206, 206)"}}>
 
        <form onSubmit={submitEdit} id={`form${article.date}`}>
       <h2 id={article.date}>{article.name}</h2>
       <p  id={`content${article.date}`}>{article.content}</p>
       <span>{article.date}</span>
     
-      <button onClick={deletePost}>Delete</button>
-      <button id={`btn${article.date}`} onClick={editPost}>Edit</button>
+      <button className="btn-dark" onClick={deletePost}>Delete</button>
+      <button className="btn-secondary" id={`btn${article.date}`} onClick={editPost}>Edit</button>
       </form>
       <span style={style}>Posted by <b>{article.username}</b></span>
   </div>

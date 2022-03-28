@@ -42,7 +42,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
 
 
 
-  return <div className='box' style={{marginRight:"20%"}}> 
+  return <div className='box'> 
     
 
       <h1 style={{textAlign:'center'}}>{isLoggedIn}'s wall</h1>      

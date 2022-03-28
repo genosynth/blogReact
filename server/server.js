@@ -6,6 +6,7 @@ const dotenv = require('dotenv')
 const routesUrls = require('./routes/routes')
 const cors = require('cors')
 
+
 dotenv.config()
 
 mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
@@ -16,6 +17,7 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 /* app.get('/', (req, res) => {
   res.send('Hello World!')
 }) */
+
 app.use(express.json())
 app.use(cors())
 app.use('/app', routesUrls)

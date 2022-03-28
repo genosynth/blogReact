@@ -2,6 +2,8 @@ import React from 'react';
 
 export default function About() {
   return <div className='box'>
+
+    <div className='info'>
       <h1 style={{textAlign:'center'}}>ABOUT US</h1>
       <p>
           POST-ED is a blog application which you can post your own blogs and articles.
@@ -9,5 +11,6 @@ export default function About() {
 
           Happy Posting :) 
       </p>
+      </div>
   </div>;
 }

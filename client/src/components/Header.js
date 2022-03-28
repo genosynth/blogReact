@@ -18,25 +18,30 @@ export default function Header({isLoggedIn, logOut,loginUsername,loginPassword, 
           <li><a href='/'><Icon.HouseDoor></Icon.HouseDoor></a></li>
           <li><a href='/about'><Icon.InfoCircle></Icon.InfoCircle></a></li>
           <li><a href='/contact'><Icon.Chat></Icon.Chat></a></li>
-      </ul>
-
-      <span><button className="btn btn-link"><a href='/signup'>Sign Up</a></button></span>
-      
-      <form className="login" onSubmit={postLogin}>
-        <div>          
-              
-            
-              <input ref={unameRef} type="text" placeholder="Username" onChange={()=>{
+          <li><a href='/signup'><b>Sign Up</b></a></li>
+         <form className="login" onSubmit={postLogin}>       
+                
+       
+             
+              <input size="10" ref={unameRef} type="text" placeholder="Username" onChange={()=>{
                 let username=unameRef.current.value
                 loginUsername(username)
               }}></input>
-              <input ref={passRef} type="password" placeholder="Password" onChange={()=>{
+              <input size="10" ref={passRef} type="password" placeholder="Password" onChange={()=>{
                 let password=passRef.current.value
                 loginPassword(password)
               }}></input>
-              <button className="btn btn-dark">Log In</button>
+              <button className="btn-dark">Log In</button>
+              
             
-        </div>
+       
       </form>
+
+      
+     
+      </ul>
+
+     
+    
   </div>;
 }
