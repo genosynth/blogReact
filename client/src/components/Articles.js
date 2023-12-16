@@ -7,7 +7,7 @@ import Article from './Article'
 function Articles({userArticles , setArticles, isLoggedIn}) {
 
   let getAllArticles = async ()=>{ //gets all articles of all registered users
-    const req = await fetch('http://192.168.0.145:4000/app/getArticles')
+    const req = await fetch(process.env.REACT_APP_GET_ARTICLES)
 
     const data = await req.json()
 

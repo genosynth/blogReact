@@ -128,7 +128,7 @@ let signUp = (event)=>{
   event.preventDefault()
   const registered = user;
 
-  axios.post('http://localhost:4000/app/sign', registered)
+  axios.post(process.env.REACT_APP_SIGN_IN, registered)
   .then((response) => {
     if(response.data.email){
     alert("Registered succesfully!")
@@ -144,7 +144,7 @@ let signUp = (event)=>{
 
   const logged = login;
 
-   axios.post('http://192.168.0.145:4000/app/login', logged)
+   axios.post(process.env.REACT_APP_LOG_IN, logged)
   //.then(response => console.log(response.data))
   .then((response) =>{ 
     if (response.data.user){// true or false check
@@ -168,7 +168,7 @@ let postArticle = async ()=>{
     date:Date.now()
   }
 
-  await axios.post('http://192.168.0.145:4000/app/article', user)
+  await axios.post(process.env.REACT_APP_POST_ARTICLE, user)
   .then(response => console.log("nigga"))
 
 }

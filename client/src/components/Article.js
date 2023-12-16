@@ -13,7 +13,7 @@ function Article({article, isLoggedIn}) {
     
     const dataSent = {username:isLoggedIn, article:article};
   
-    await axios.post('http://192.168.0.145:4000/app/deleteArticle', dataSent)
+    await axios.post(process.env.REACT_APP_DELETE_ARTICLE, dataSent)
     .then((response) => {
       if(response.status){
       alert("Post Deleted Successfully!")
@@ -53,7 +53,7 @@ function Article({article, isLoggedIn}) {
         id:article._id
       }
     alert("Post has been edited!")
-      await axios.post('http://192.168.0.145:4000/app/editArticle', editInfo)
+      await axios.post(process.env.REACT_APP_EDIT_ARTICLE, editInfo)
       .then(window.location.href="/dashboard")
       
        
