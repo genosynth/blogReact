@@ -17,23 +17,15 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 
 
 
+app.use(cors())
+app.use(express.urlencoded({extended: true}))
+app.use(express.json(({extended: true})))
+app.use('/app', routesUrls)
+
 app.use(express.static(path.join(__dirname + '/public' )))
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });  
-
-
-app.use(express.json())
-
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://example.com");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
-app.use(cors())
-app.use('/app', routesUrls)
-
 
 
 app.listen(port, () => {
