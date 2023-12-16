@@ -1,37 +1,39 @@
 import React, {useEffect} from 'react';
 import jwt from 'jwt-decode';
 import Article from './Article'
+import axios from 'axios';
 
 
 
 function Articles({userArticles , setArticles, isLoggedIn}) {
-
   let getAllArticles = async ()=>{ //gets all articles of all registered users
-    const req = await fetch(process.env.REACT_APP_GET_ARTICLES)
-
-    const data = await req.json()
-
-    console.log(data.users)
-
-    if(data.users){
-      let allArticles = []
-      data.users.forEach((user)=>{
-        user.articles.forEach((article)=>{
-         article.username = user.username
-          allArticles.push(article)
-        })
-      })
-
-      allArticles.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
-        return new Date(b.date) - new Date(a.date);
-      });
-      console.log (allArticles)
-      return setArticles(allArticles)
-    }
-  }
-
+    await axios.post(process.env.REACT_APP_GET_ARTICLES) 
+ 
+     .then((response) =>{ 
+       if (response.data.users){// true or false check
+         let allArticles = []
+         response.data.users.forEach((user)=>{
+           user.articles.forEach((article)=>{
+            article.username = user.username
+             allArticles.push(article)
+           })
+         })
+   
+         allArticles.sort(function(a,b){
+           // Turn your strings into dates, and then subtract them
+           // to get a value that is either negative, positive, or zero.
+           return new Date(b.date) - new Date(a.date);
+         });
+         console.log (allArticles)
+         return setArticles(allArticles)
+       } else {
+         alert("Error occured")
+     }
+       console.log(response.data)
+     })   
+ 
+   
+   }
 
 
   let getArticles = async ()=>  { //gets logged in's user articles only

@@ -11,7 +11,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
 
   async function accessPrivatePage(event){
     //event.PreventDefault()
-    const req = await fetch('http://192.168.0.145:4000/app/dashboard',{
+    const req = await fetch(process.env.REACT_APP_GET_DASHBOARD,{
       headers: {
         'x-axxess-token':localStorage.getItem('token'),
       },
@@ -28,7 +28,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
       const user = jwt(token)
       //console.log("ah")
       if (user.username){
-        accessPrivatePage()
+        return // accessPrivatePage()
         
       } else {
         localStorage.removeItem('token')

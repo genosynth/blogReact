@@ -30,7 +30,7 @@ function Article({article, isLoggedIn}) {
     document.getElementById(article.date).innerHTML=`<input id="input${article.date}" value=${article.name} required minLength="3"></input>`
     document.getElementById(`content${article.date}`).innerHTML=`<textarea id="inputContent${article.date}" placeholder="${article.content}" required minLength="3"></textarea>`
     //document.getElementById(`btn${article.date}`).innerText=`Save`
-    let newBtn = document.createElement("button")
+    let newBtn = document.createElement("Button")
     newBtn.classList.add(`btn-success`)
     newBtn.innerText = "Save"    
     document.getElementById(`btn${article.date}`).remove() //removes edit button
@@ -68,21 +68,21 @@ function Article({article, isLoggedIn}) {
   let style={textAlign: "right"}
 
   if (article.username===isLoggedIn){
-    return <div className='box' style={{backgroundColor: "rgb(206, 206, 206)"}}>
+    return <div className='box-user' >
 
        <form onSubmit={submitEdit} id={`form${article.date}`}>
       <h2 id={article.date}>{article.name}</h2>
       <p  id={`content${article.date}`}>{article.content}</p>
       <span>{article.date}</span>
     
-      <button className="btn-dark" onClick={deletePost}>Delete</button>
-      <button className="btn-secondary" id={`btn${article.date}`} onClick={editPost}>Edit</button>
+      <Button className="btn-dark" onClick={deletePost}>Delete</Button>
+      <Button className="btn-secondary" id={`btn${article.date}`} onClick={editPost}>Edit</Button>
       </form>
       <span style={style}>Posted by <b>{article.username}</b></span>
   </div>
   }
 
-  return <div className='box'>
+  return <div className='box-article'>
      
       <h2>{article.name}</h2>
       <p>{article.content}</p>

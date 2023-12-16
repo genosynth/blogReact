@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 const routesUrls = require('./routes/routes')
 const cors = require('cors')
+const path = require('path') // path is used for deployment
 
 
 dotenv.config()
@@ -14,9 +15,13 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
     else console.log("Database connected")
 })
 
-/* app.get('/', (req, res) => {
-  res.send('Hello World!')
-}) */
+
+
+app.use(express.static(path.join(__dirname + '/public' )))
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});  
+
 
 app.use(express.json())
 app.use(cors())
