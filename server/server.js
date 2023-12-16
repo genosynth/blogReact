@@ -26,7 +26,7 @@ app.get('/*', function (req, res) {
 app.use(express.json())
 
 app.use(cors({credentials: true, origin: 'https://rich-blue-whale-hat.cyclic.app/'}));
-//app.use('/app', routesUrls)
+app.use('/app', routesUrls)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
