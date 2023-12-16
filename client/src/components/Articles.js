@@ -7,7 +7,7 @@ import axios from 'axios';
 
 function Articles({userArticles , setArticles, isLoggedIn}) {
   let getAllArticles = async ()=>{ //gets all articles of all registered users
-    await axios.post(process.env.REACT_APP_GET_ARTICLES) 
+    await axios.get(process.env.REACT_APP_GET_ARTICLES) 
  
      .then((response) =>{ 
        if (response.data.users){// true or false check
