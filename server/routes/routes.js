@@ -79,7 +79,7 @@ router.get('/dashboard', async (req, res) => {
 	}
 })
 
-router.post('/getArticles', async (req, res)=> {
+router.get('/getArticles', async (req, res)=> {
     const users = await signUpTemplateCopy.find().select("username").select("articles")
     //console.log(users)
     if (users){

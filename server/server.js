@@ -11,22 +11,21 @@ const path = require('path') // path is used for deployment
 dotenv.config()
 
 
+mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
+  if (error) {return console.log(error)}
+  else console.log("Database connected")
+})
 
-app.use(cors())
-app.use(express.json())
-app.use('/app', routesUrls)
 
 app.use(express.static(path.join(__dirname + '/public' )))
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });  
 
+app.use(express.json())
+app.use(cors())
+app.use('/app', routesUrls)
 
-
-mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
-  if (error) {return console.log(error)}
-  else console.log("Database connected")
-})
 
 
 
