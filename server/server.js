@@ -18,7 +18,7 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 
 
 app.use(express.json())
-app.use(cors())
+//app.use(cors())
 app.use('/app', routesUrls)
 
 
