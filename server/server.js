@@ -17,7 +17,7 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 })
 
 
-app.use('/app', routesUrls)
+
 
 const buildPath = path.join(__dirname, 'public')
 
@@ -26,6 +26,7 @@ app.use(express.static(buildPath))
 app.use(express.json())
 app.use(cors())
 
+app.use('/app', routesUrls)
 
 // gets the static files from the build folder
 app.get('*', (req, res) => {
