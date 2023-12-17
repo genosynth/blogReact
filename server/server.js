@@ -17,10 +17,10 @@ app.use(express.json())
 app.use('/app', routesUrls)
 
 
-/* app.use(express.static(path.join(__dirname + '/public' )))
+ app.use(express.static(path.join(__dirname + '/public' )))
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});  */
+});  
 
 mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
   if (error) {return console.log(error)}
