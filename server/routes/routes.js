@@ -82,11 +82,9 @@ router.get('/dashboard', async (req, res) => {
 router.get('/getArticles', async (req, res)=> {
     const users = await signUpTemplateCopy.find().select("username").select("articles")
     //console.log(users)
-    try {
     if (users){
         return res.json({status:"gotem", users:users})
     } else { return res.json({status:"error getting articles", users:false})}
-} catch (error) {res.json({ status: 'error', error: 'error' })}
 }) 
 
 router.post('/deleteArticle', async (req, res)=>{

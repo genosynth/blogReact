@@ -17,10 +17,20 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 })
 
 
-app.use(express.json())
-app.use(cors())
 app.use('/app', routesUrls)
 
+const buildPath = path.join(__dirname, 'public')
+
+
+app.use(express.static(buildPath))
+app.use(express.json())
+app.use(cors())
+
+
+// gets the static files from the build folder
+app.get('*', (req, res) => {
+  res.sendFile(path.join(buildPath, 'index.html'))
+})
 
 
 
