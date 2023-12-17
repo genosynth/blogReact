@@ -17,10 +17,14 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 
 
 app.use(cors())
-app.use(express.json())
+
 app.use('/app', routesUrls)
+app.use(express.json())
 
-
+app.use(express.static(path.join(__dirname + '/public' )))
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});  
 
 
 
