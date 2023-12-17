@@ -14,7 +14,7 @@ dotenv.config()
 
 app.use(cors())
 app.use(express.json())
-app.use('/app', routesUrls)
+app.use('/', routesUrls)
 
 
  app.use(express.static(path.join(__dirname + '/public' )))
