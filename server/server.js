@@ -19,7 +19,7 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 
 app.use(express.json())
 app.use(cors())
-app.use('/', routesUrls)
+app.use('/app', routesUrls)
 
 
 
