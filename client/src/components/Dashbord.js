@@ -28,7 +28,7 @@ export default function Dashboard({isLoggedIn, postArticle, insertArticleName, i
       const user = jwt(token)
       //console.log("ah")
       if (user.username){
-        return // accessPrivatePage()
+        return  //accessPrivatePage()
         
       } else {
         localStorage.removeItem('token')
