@@ -18,7 +18,6 @@ mongoose.connect(process.env.DATABASE_ACCESS, (error, result) =>{
 
 
 
-
 const buildPath = path.join(__dirname, 'public')
 
 
@@ -26,7 +25,14 @@ app.use(express.static(buildPath))
 app.use(express.json())
 app.use(cors())
 
-app.use('/app', routesUrls)
+router.get('/getArticles', async (req, res)=> {
+  const users = await signUpTemplateCopy.find().select("username").select("articles")
+  //console.log(users)
+  if (users){
+      return res.json({status:"gotem", users:users})
+  } else { return res.json({status:"error getting articles", users:false})}
+}) 
+
 
 // gets the static files from the build folder
 app.get('*', (req, res) => {
