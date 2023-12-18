@@ -25,14 +25,7 @@ app.use(express.static(buildPath))
 app.use(express.json())
 app.use(cors())
 
-router.get('/getArticles', async (req, res)=> {
-  const users = await signUpTemplateCopy.find().select("username").select("articles")
-  //console.log(users)
-  if (users){
-      return res.json({status:"gotem", users:users})
-  } else { return res.json({status:"error getting articles", users:false})}
-}) 
-
+app.use('/app', routesUrls)
 
 // gets the static files from the build folder
 app.get('*', (req, res) => {
